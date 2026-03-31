@@ -29,18 +29,45 @@ ToxiPred goes beyond simple classification by implementing industry-standard saf
 
 ## 🏗️ Architecture
 
-```
-ToxiPred/
-├── src/
-│   ├── models/
-│   │   ├── domain.py            # Applicability Domain (IsolationForest)
-│   │   ├── predict.py           # Multi-layered inference engine
-│   ├── features/
-│   │   ├── chem_insights.py     # Medicinal chemistry heuristic alerts
-│   ├── app/
-│   │   ├── cli.py               # Professional CLI interface
-│   │   └── streamlit_app.py     # Elite UI with Comparison & Calibration
-...
+```mermaid
+graph TD
+    A[Input: SMILES String] --> B{Client Interfaces}
+    B -->|Web Application| C[Streamlit Dashboard]
+    B -->|Terminal/Batch| D[Professional CLI]
+    
+    C --> E[Inference Engine]
+    D --> E
+    
+    subgraph Core Predictive Pipeline
+        E --> F[Featurization Layer]
+        F --> |Morgan FPs| G(XGBoost Model)
+        F --> |RDKit Descriptors| H(Applicability Domain)
+        
+        G --> I[Isotonic Calibrator]
+        I --> J([Calibrated Probability %])
+        
+        H --> |Isolation Forest| K([OOD Status])
+    end
+    
+    subgraph Medicinal Chemistry Layer
+        E --> L[Heuristics Engine]
+        L --> M[Lipinski/Veber Rules]
+        L --> N[Toxicophore Alerts]
+        M --> O([Structural Insights])
+        N --> O
+    end
+    
+    J --> P((Final Risk Report))
+    K --> P
+    O --> P
+    
+    classDef ui fill:#00D4AA,stroke:#000,stroke-width:2px,color:#fff;
+    classDef model fill:#ff7b00,stroke:#000,stroke-width:2px,color:#fff;
+    classDef data fill:#2d3748,stroke:#000,stroke-width:1px,color:#fff;
+    
+    class C,D ui;
+    class G,H,I model;
+    class J,K,O,P data;
 ```
 
 ---
