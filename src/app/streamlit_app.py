@@ -631,11 +631,14 @@ def render_compare_tab():
                     
                     st.markdown("<br>", unsafe_allow_html=True)
                     
-                    # Structure
-                    from src.explainability.shap_explain import render_molecule_with_highlights
-                    mol_img = render_molecule_with_highlights(res["smiles_canonical"], img_size=(400, 300))
-                    if mol_img:
-                        st.image(mol_img)
+                    # Structure visualization
+                    try:
+                        from src.explainability.shap_explain import render_molecule_with_highlights
+                        mol_img = render_molecule_with_highlights(res["smiles_canonical"], img_size=(400, 300))
+                        if mol_img:
+                            st.image(mol_img)
+                    except Exception:
+                        st.code(res["smiles_canonical"], language=None)
                     
                     # AD & Insights
                     st.markdown(f"**Applicability Domain:** `{res['ad_status']}`")
