@@ -1,4 +1,17 @@
+<div align="center">
+
+# 🧬 ToxiPred
+
+### In-Silico ADMET & Hepatotoxicity Prediction Engine
+
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![RDKit](https://img.shields.io/badge/Chemistry-RDKit-red.svg)](https://www.rdkit.org/)
+[![XGBoost](https://img.shields.io/badge/Model-XGBoost-orange.svg)](https://xgboost.readthedocs.io/)
+[![SHAP](https://img.shields.io/badge/Explainability-SHAP-purple.svg)](https://shap.readthedocs.io/)
+
 ---
+</div>
 
 ## ✨ Elite Features (Scientific Rigor Layer)
 
@@ -38,8 +51,8 @@ ToxiPred/
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/ToxiPred.git
-cd ToxiPred
+git clone https://github.com/balajiprincejoshua-byte/ToxiPred-ADMET-Engine.git
+cd ToxiPred-ADMET-Engine
 pip install -e .
 ```
 
@@ -118,4 +131,3 @@ This software is provided for **research and educational purposes only**. It is 
 *Designed for high-impact biotech portfolio presentation*
 
 </div>
-]]>
