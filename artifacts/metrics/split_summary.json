@@ -1,0 +1,8 @@
+{
+  "train_size": 1302,
+  "val_size": 279,
+  "test_size": 279,
+  "train_toxic_ratio": 0.18125960061443933,
+  "val_toxic_ratio": 0.1827956989247312,
+  "test_toxic_ratio": 0.1827956989247312
+}

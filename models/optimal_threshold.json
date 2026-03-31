@@ -1,0 +1,4 @@
+{
+  "optimal_threshold": 0.19999999999999996,
+  "method": "f1_maximization"
+}
