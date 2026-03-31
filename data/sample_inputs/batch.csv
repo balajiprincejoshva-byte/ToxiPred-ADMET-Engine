@@ -1,0 +1,9 @@
+smiles,name
+CC(=O)Nc1ccc(O)cc1,Acetaminophen
+CC(=O)Oc1ccccc1C(=O)O,Aspirin
+Cn1c(=O)c2c(ncn2C)n(C)c1=O,Caffeine
+CC(C)Cc1ccc(cc1)C(C)C(=O)O,Ibuprofen
+NNC(=O)c1ccncc1,Isoniazid
+OC(=O)Cc1ccccc1Nc1c(Cl)cccc1Cl,Diclofenac
+CCCC(CCC)C(=O)O,Valproic Acid
+CN(C)C(=N)NC(=N)N,Metformin

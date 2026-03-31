@@ -1,0 +1,11 @@
+Classification Report (threshold = 0.20)
+============================================================
+
+              precision    recall  f1-score   support
+
+   Non-Toxic       0.95      0.80      0.87       228
+       Toxic       0.48      0.82      0.61        51
+
+    accuracy                           0.81       279
+   macro avg       0.72      0.81      0.74       279
+weighted avg       0.87      0.81      0.82       279
