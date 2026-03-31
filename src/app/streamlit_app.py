@@ -358,16 +358,19 @@ def render_predict_tab():
     </div>
     """, unsafe_allow_html=True)
 
-    # Input section — use a separate key to avoid widget/session_state conflict
-    if "selected_smiles" not in st.session_state:
-        st.session_state.selected_smiles = ""
+    # Input section — use session_state to control input from examples
+    if "smiles_input" not in st.session_state:
+        st.session_state.smiles_input = ""
+    
+    # Track if an example was just clicked to trigger auto-prediction
+    if "auto_predict" not in st.session_state:
+        st.session_state.auto_predict = False
 
     col1, col2 = st.columns([3, 1])
 
     with col1:
         smiles_input = st.text_input(
             "Enter SMILES String",
-            value=st.session_state.selected_smiles,
             placeholder="e.g., CC(=O)Nc1ccc(O)cc1 (Acetaminophen)",
             help="SMILES (Simplified Molecular Input Line Entry System) notation for your molecule.",
             key="smiles_input",
@@ -376,6 +379,11 @@ def render_predict_tab():
     with col2:
         st.markdown("<br>", unsafe_allow_html=True)
         predict_clicked = st.button("🔬 Predict", use_container_width=True, key="predict_btn")
+    
+    # Auto-trigger prediction if an example was clicked
+    if st.session_state.auto_predict:
+        predict_clicked = True
+        st.session_state.auto_predict = False
 
     # Example molecules
     with st.expander("📋 Example Molecules", expanded=False):
@@ -393,7 +401,10 @@ def render_predict_tab():
         for i, (name, smi) in enumerate(examples.items()):
             with cols[i % 4]:
                 if st.button(name, key=f"example_{i}", use_container_width=True):
-                    st.session_state.selected_smiles = smi
+                    # Direct update to session_state key linked to text_input
+                    # Note: We must update the key *before* rerun
+                    st.session_state.smiles_input = smi
+                    st.session_state.auto_predict = True
                     st.rerun()
 
     # Prediction results
